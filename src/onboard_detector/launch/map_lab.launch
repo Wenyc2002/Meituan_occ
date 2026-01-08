@@ -1,0 +1,65 @@
+<launch>
+  <!-- 定义地图路径参数 -->
+  <arg name="map_file" default="$(find onboard_detector)/maps/map.yaml" />
+
+  <!-- 启动地图服务器（加载.yaml文件） -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <node name="elevator_publisher" pkg="onboard_detector" 
+          type="elevator_pub.py" output="screen" />
+
+  <!-- 启动 occ_elevator_pub.py -->
+    <!-- <node name="occ_elevator_publisher" pkg="onboard_detector" 
+          type="occ_elevator_pub.py" output="screen" /> -->
+          
+
+    <!-- 启动 odom_pub.py -->
+    <node name="odometry_publisher" pkg="onboard_detector" 
+          type="odom_pub.py" output="screen" />
+
+    <!-- 启动 person_pub.py -->
+
+    <!-- <node name="person_publisher" pkg="onboard_detector" 
+          type="person_pub.py" output="screen" /> -->
+  
+  <!-- 包含AMCL定位节点 -->
+  <include file="$(find onboard_detector)/launch/amcl.launch" />
+  <!-- <include file="$(find onboard_detector)/launch/odom.launch" /> -->
+
+ 
+  <!-- 启动RViz可视化 -->
+  <!-- <node name="rviz" pkg="rviz" type="rviz" output="screen" /> -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find onboard_detector)/rviz/track.rviz" output="screen"/>
+
+  <node pkg="tf" type="static_transform_publisher" name="livox_to_base_link"
+      args="0 0 0.5 0 0 0 base_link livox_frame 10"/>
+<!-- 
+      <node pkg="tf" type="static_transform_publisher" name="livox_to_os_sensor"
+      args="0 0 0 0 0 0 os_sensor livox_frame 10"/> -->
+
+
+      <!-- <node pkg="tf" type="static_transform_publisher" name="os_sensor_to_base_link"
+      args="0 0 0.5 0 0 0 base_link os_sensor 10"/> -->
+
+
+ 
+  
+  <node pkg="pointcloud_to_laserscan" type="pointcloud_to_laserscan_node" name="pc_to_scan" output="screen">
+  <param name="target_frame" value="base_link"/> <!-- 或者 lidar_link -->
+  <param name="min_height" value="0.2"/>        <!-- 过滤上下高度 -->
+  <param name="max_height" value="1.0"/>
+  <param name="angle_min" value="-3.14159"/>
+  <param name="angle_max" value="3.14159"/>
+  <param name="angle_increment" value="0.0058"/> <!-- 可留空自动 -->
+  <param name="range_min" value="0.1"/>
+  <param name="range_max" value="30.0"/>
+  <remap from="cloud_in" to="/livox/points"/>   <!-- 你转换后的 PointCloud2 -->
+  <remap from="scan" to="/scan_pcd"/>
+
+
+
+
+
+
+</node>
+</launch>

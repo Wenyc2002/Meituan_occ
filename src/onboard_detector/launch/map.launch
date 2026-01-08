@@ -1,0 +1,10 @@
+<launch>
+  <!-- 定义地图路径参数 -->
+  <arg name="map_file" default="$(find onboard_detector)/maps/map.yaml" />
+
+  <!-- 启动地图服务器（加载.yaml文件） -->
+  <node name="map_server" pkg="map_server" type="map_server" args="$(arg map_file)" />
+
+  <!-- 启动RViz -->
+  <node name="rviz" pkg="rviz" type="rviz" output="screen" />
+</launch>
