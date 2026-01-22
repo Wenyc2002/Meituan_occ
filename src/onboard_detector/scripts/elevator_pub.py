@@ -9,10 +9,15 @@ def publish_polygon():
     poly = PolygonStamped()
     poly.header.frame_id = "map"  
     poly.header.stamp = rospy.Time.now()
-
+    #lab_elevator
+    # points = [
+    #     (13.9, 29.8),(15, 32),
+    #             (16.2, 31.4),(15, 29.2)
+    # ]
+    #toilet_elevator1
     points = [
-        (13.9, 29.8),(15, 32),
-                (16.2, 31.4),(15, 29.2)
+        (-8, -13.9),(-8.18, -12.8),
+                (-6.26, -12.7),(-6.15, -13.6)
     ]
     
     # points = [
