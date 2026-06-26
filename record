@@ -1,6 +1,0 @@
-rosbag record /Laser_map /Odometry /amcl/parameter_descriptions /amcl/parameter_updates /amcl_pose /clicked_point /cloud_effected /cloud_registered /cloud_registered_body /cmd_vel /frontend_info /initialpose /livox/imu /livox/lidar /livox/points /map /map_metadata /map_occ /map_occ_updates /map_updates /move_base_simple/goal /odom /particlecloud /path /rosout /rosout_agg /scan_pcd /scout_light_control /scout_status /tf /tf_static /world_points /zed2/joint_states /zed2/zed_node/parameter_descriptions /zed2/zed_node/parameter_updates /zed2/zed_node/plane /zed2/zed_node/rgb/camera_info /zed2/zed_node/rgb/image_rect_color /zed2/zed_node/rgb/image_rect_color/compressed /zed2/zed_node/rgb/image_rect_color/compressed/parameter_descriptions /zed2/zed_node/rgb/image_rect_color/compressed/parameter_updates /zed2/zed_node/rgb/image_rect_color/compressedDepth /zed2/zed_node/rgb/image_rect_color/compressedDepth/parameter_descriptions /zed2/zed_node/rgb/image_rect_color/compressedDepth/parameter_updates /zed2/zed_node/rgb/image_rect_color/theora /zed2/zed_node/rgb/image_rect_color/theora/parameter_descriptions /zed2/zed_node/rgb/image_rect_color/theora/parameter_updates
-
-
-
-
-

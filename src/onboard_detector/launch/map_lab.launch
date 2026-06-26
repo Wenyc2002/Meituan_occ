@@ -17,10 +17,6 @@
     <node name="odometry_publisher" pkg="onboard_detector" 
           type="odom_pub.py" output="screen" />
 
-    <!-- 启动 person_pub.py -->
-
-    <!-- <node name="person_publisher" pkg="onboard_detector" 
-          type="person_pub.py" output="screen" /> -->
   
   <!-- 包含AMCL定位节点 -->
   <include file="$(find onboard_detector)/launch/amcl.launch" />
@@ -33,13 +29,6 @@
 
   <node pkg="tf" type="static_transform_publisher" name="livox_to_base_link"
       args="0 0 0.5 0 0 0 base_link livox_frame 10"/>
-<!-- 
-      <node pkg="tf" type="static_transform_publisher" name="livox_to_os_sensor"
-      args="0 0 0 0 0 0 os_sensor livox_frame 10"/> -->
-
-
-      <!-- <node pkg="tf" type="static_transform_publisher" name="os_sensor_to_base_link"
-      args="0 0 0.5 0 0 0 base_link os_sensor 10"/> -->
 
 
  

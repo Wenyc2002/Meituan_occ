@@ -16,15 +16,15 @@ class ElevatorSpaceMonitor:
         rospy.init_node("elevator_space_monitor", anonymous=True)
 
         # 电梯区域（map坐标）lab_elevator
-        # self.elevator_points_map = [
-        #     (13.9, 29.8), (15, 32),
-        #     (16.2, 31.4), (15, 29.2)
-        # ]
-        # 电梯区域（map坐标）toilet_elevator1
         self.elevator_points_map = [
-            (-8, -13.9), (-8.18, -12.8),
-            (-6.26, -12.7), (-6.15, -13.6)
+            (13.9, 29.8), (15, 32),
+            (16.2, 31.4), (15, 29.2)
         ]
+        # 电梯区域（map坐标）toilet_elevator1
+        # self.elevator_points_map = [
+        #     (-8, -13.9), (-8.18, -12.8),
+        #     (-6.26, -12.7), (-6.15, -13.6)
+        # ]
         # self.elevator_points_map = [
         # (16.5, 27.7), (13.1, 30),
         #     (11.8, 27.7),(15.2, 25.6)
