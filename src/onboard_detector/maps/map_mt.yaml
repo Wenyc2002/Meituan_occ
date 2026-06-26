@@ -1,9 +1,0 @@
-image: /home/goodboy/yanci_ws/src/onboard_detector/maps/map_mt.pgm
-resolution: 0.050000000
-origin:
-  - -5.1856813430786133
-  - -18.664093017578125
-  - 0
-negate: 0
-occupied_thresh: 0.6500000000000000
-free_thresh: 0.25sss

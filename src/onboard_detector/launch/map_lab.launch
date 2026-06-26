@@ -8,28 +8,30 @@
   <node name="elevator_publisher" pkg="onboard_detector" 
           type="elevator_pub.py" output="screen" />
 
-  <!-- 启动 occ_elevator_pub.py -->
-    <!-- <node name="occ_elevator_publisher" pkg="onboard_detector" 
-          type="occ_elevator_pub.py" output="screen" /> -->
+  <!-- 电梯空间评估：订阅 lidar/person/map/elevator_area，发布 free space/enterable/metrics -->
+  <node name="elevator_space_monitor" pkg="onboard_detector"
+        type="occ_elevator_pub.py" output="screen">
+    <param name="lidar_topic" value="/scan_pcd"/>
+    <param name="lidar_type" value="scan"/>
+    <param name="person_topic" value="/tracked_persons_situ"/>
+    <param name="map_topic" value="/map"/>
+    <param name="elevator_area_topic" value="/elevator_area"/>
+    <param name="target_frame" value="base_link"/>
+    <param name="grid_resolution" value="0.05"/>
+    <param name="robot_width" value="0.60"/>
+    <param name="robot_length" value="0.75"/>
+    <param name="safety_margin" value="0.08"/>
+    <param name="area_threshold" value="1.20"/>
+    <param name="debug" value="true"/>
+  </node>
           
 
     <!-- 启动 odom_pub.py -->
     <node name="odometry_publisher" pkg="onboard_detector" 
           type="odom_pub.py" output="screen" />
-
-    <!-- 启动 person_pub.py -->
-
-    <!-- <node name="person_publisher" pkg="onboard_detector" 
-          type="person_pub.py" output="screen" /> -->
-  
   <!-- 包含AMCL定位节点 -->
   <include file="$(find onboard_detector)/launch/amcl.launch" />
   <!-- <include file="$(find onboard_detector)/launch/odom.launch" /> -->
-
- 
-  <!-- 启动RViz可视化 -->
-  <!-- <node name="rviz" pkg="rviz" type="rviz" output="screen" /> -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find onboard_detector)/rviz/track.rviz" output="screen"/>
 
   <node pkg="tf" type="static_transform_publisher" name="livox_to_base_link"
       args="0 0 0.5 0 0 0 base_link livox_frame 10"/>
