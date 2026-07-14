@@ -1,0 +1,1 @@
+./bringup_scout.sh
